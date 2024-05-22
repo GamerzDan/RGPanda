@@ -52,7 +52,7 @@ namespace RatherGood.Panda
             // Random action state to do next time
             if (CharacterDatabase.RandomSkill(Entity, out queueSkill, out queueSkillLevel) && queueSkill != null)
             {
-                if (Entity.IndexOfSkillUsage(queueSkill.DataId, SkillUsageType.Skill) >= 0)
+                if (Entity.IndexOfSkillUsage(SkillUsageType.Skill, queueSkill.DataId) >= 0)
                 {
                     queueSkill = null;
                     queueSkillLevel = 0;
@@ -188,7 +188,7 @@ namespace RatherGood.Panda
             else if (!IsPlayingActionAnimation)
             {
 
-                if (queueSkill != null && Entity.IndexOfSkillUsage(queueSkill.DataId, SkillUsageType.Skill) < 0)
+                if (queueSkill != null && Entity.IndexOfSkillUsage(SkillUsageType.Skill, queueSkill.DataId) < 0)
                 {
                     attackInProcess = Entity.UseSkill(queueSkill.DataId, false, 0, new AimPosition()
                     {
